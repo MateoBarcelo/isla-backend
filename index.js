@@ -31,8 +31,8 @@ app.use('/api/uploads', uploadRouter)
 app.use('/media', express.static('uploads'))
 
 app.use(handleError)
-const PORT = 3001
-app.listen(PORT, (err) => {
+
+app.listen(process.env.PORT, (err) => {
     if(err) console.log(err)
     console.log("Server listening at port " + PORT)
 })
