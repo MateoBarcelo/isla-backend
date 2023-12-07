@@ -34,7 +34,7 @@ app.use(handleError)
 
 app.listen(process.env.PORT, (err) => {
     if(err) console.log(err)
-    console.log("Server listening at port " + PORT)
+    console.log("Server listening at port " + process.env.PORT)
 })
 
 module.exports = app
