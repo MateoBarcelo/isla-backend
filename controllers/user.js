@@ -48,12 +48,9 @@ userRouter.get('/email/:email', userValidation, (req, res, next) => {
 userRouter.put('/:id', userValidation, async (req, res, next) => {
 
     const { id } = req.params
-    const { body, userRole } = req
+    const { body } = req
     const { name, surname, email, phone, address, role } = body
 
-    if(userRole !== 'admin') {
-        return res.status(401).json({error: 'user is not admin'})
-    }
     try {
         User.findByIdAndUpdate(id, { name, surname, email, phone, address, role }, { new: true }).then(user => {
             res.json(user).status(200)
