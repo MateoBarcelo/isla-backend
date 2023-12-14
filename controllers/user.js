@@ -35,11 +35,6 @@ userRouter.get('/:id', userValidation,(req, res, next) => {
 
 userRouter.get('/email/:email', userValidation, (req, res, next) => {
     const { email } = req.params
-    const { userRole } = req
-
-    if(userRole !== 'admin') {
-        return res.status(401).json({error: 'user is not admin'})
-    }
 
     User.findOne({email}).then(user => {
         if(user) {
